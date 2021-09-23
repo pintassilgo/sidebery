@@ -38,8 +38,7 @@
     :onExp="onExp")
   .close(
     v-if="$store.state.showTabRmBtn"
-    @mousedown.stop="onCloseClick"
-    @mouseup.stop=""
+    @click.stop="onCloseClick"
     @contextmenu.stop.prevent="")
     svg: use(xlink:href="#icon_remove")
   .ctx(v-if="$store.state.showTabCtx && color")
