@@ -132,8 +132,7 @@ export default {
      * Mousedown Mid
      */
     onMouseDownMid(e) {
-      this.close()
-      Actions.blockWheel()
+      this.mouseDownMid = true
       e.preventDefault()
     },
 
@@ -190,6 +189,12 @@ export default {
           this.longClickActionLeft = clearTimeout(this.longClickActionLeft)
         }
         this.mouseDownLeft = false
+      }
+
+      if (e.button === 1 && this.mouseDownMid) {
+        this.mouseDownMid = false
+        this.close()
+        Actions.blockWheel()
       }
 
       if (e.button === 2) {
