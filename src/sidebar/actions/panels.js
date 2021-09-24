@@ -270,7 +270,7 @@ function switchToPanel(index, withoutTabActivation) {
   }
 
   this.actions.recalcPanelScroll()
-  this.actions.updateTabsVisability()
+  this.actions.updateTabsVisibility()
   this.actions.updatePanelBoundsDebounced()
   this.actions.savePanelIndex()
 }
@@ -356,7 +356,7 @@ function switchPanel(dir = 0) {
   }
 
   this.actions.recalcPanelScroll()
-  this.actions.updateTabsVisability()
+  this.actions.updateTabsVisibility()
   this.actions.updatePanelBoundsDebounced()
 }
 
