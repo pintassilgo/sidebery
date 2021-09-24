@@ -327,8 +327,8 @@ function switchPanel(dir = 0) {
   }
 
   // Update panel index
-  let i = this.state.panelIndex + dir
-  for (; this.state.panels[i]; i += dir) {
+  let i = dir > 0 && this.state.panels.length === this.state.panelIndex + dir ? 0 : dir < 0 && this.state.panelIndex === 0 ? this.state.panels.length - 1 : this.state.panelIndex + dir
+  for (; this.state.panels[i] || (i < 0 && (i = this.state.panels.length - 1)) || (i === this.state.panels.length && (i = 0) === i); i += dir) {
     const p = this.state.panels[i]
     if (p.skipOnSwitching) continue
     if (this.state.skipEmptyPanels && p.tabs && !p.tabs.length) continue
