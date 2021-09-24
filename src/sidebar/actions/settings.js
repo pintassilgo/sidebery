@@ -51,7 +51,7 @@ function updateSettings(settings) {
   }
 
   if (hideInactTabs || updateInvisTabs) {
-    Actions.updateTabsVisability()
+    Actions.updateTabsVisibility()
   }
 
   if (toggleBookmarks) {

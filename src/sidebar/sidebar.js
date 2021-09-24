@@ -61,7 +61,7 @@ export default new Vue({
     Actions.loadCtxMenu(), Actions.loadCSSVars(), Actions.scrollToActiveTab()
     Actions.loadFavicons()
     Actions.loadPermissions(true)
-    Actions.updateTabsVisability()
+    Actions.updateTabsVisibility()
     Actions.saveTabsData()
     Actions.saveGroups()
     State.tabs.forEach(t => Actions.saveTabData(t))

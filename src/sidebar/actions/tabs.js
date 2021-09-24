@@ -1656,9 +1656,9 @@ async function showAllTabs() {
 }
 
 /**
- * Update tabs visability
+ * Update tabs visibility
  */
-function updateTabsVisability() {
+function updateTabsVisibility() {
   let hideFolded = this.state.hideFoldedTabs
   let hideInact = this.state.hideInact
   let actPanelIndex = this.state.panelIndex < 0 ? this.state.lastPanelIndex : this.state.panelIndex
@@ -1797,7 +1797,7 @@ function expTabsBranch(tabId) {
 }
 
 /**
- * Toggle tabs branch visability (fold/expand)
+ * Toggle tabs branch visibility (fold/expand)
  */
 async function toggleBranch(tabId) {
   const rootTab = this.state.tabsMap[tabId]
@@ -2929,7 +2929,7 @@ export default {
   moveTabsToPanel,
 
   showAllTabs,
-  updateTabsVisability,
+  updateTabsVisibility,
 
   foldTabsBranch,
   expTabsBranch,
