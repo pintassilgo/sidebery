@@ -750,6 +750,12 @@ function onKeyNewTabAsLastChild() {
  */
 function setupKeybindingListeners() {
   browser.commands.onCommand.addListener(Handlers.onCmd)
+  browser.runtime.onMessage.addListener(Handlers.onMessage)
+}
+
+function onMessage (msg) {
+  if (msg === 'next_panel') this.handlers.onKeyNextPanel()
+  else if (msg === 'prev_panel') this.handlers.onKeyPrevPanel()
 }
 
 /**
@@ -757,6 +763,7 @@ function setupKeybindingListeners() {
  */
 function resetKeybindingListeners() {
   browser.commands.onCommand.removeListener(Handlers.onCmd)
+  browser.runtime.onMessage.removeListener(Handlers.onMessage)
 }
 
 export default {
@@ -782,6 +789,7 @@ export default {
   onKeyMoveTabsDown,
   onKeyNewTabAsFirstChild,
   onKeyNewTabAsLastChild,
+  onMessage,
   setupKeybindingListeners,
   resetKeybindingListeners,
 }
