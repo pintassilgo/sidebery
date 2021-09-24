@@ -585,8 +585,8 @@ export default {
     expandDropTarget() {
       if (!this.pointerMode.startsWith('inside')) return
 
-      if (typeof State.dropParent === 'number') Actions.toggleBranch(State.dropParent)
-      if (typeof State.dropParent === 'string') Actions.toggleBookmarksBranch(State.dropParent)
+      if (typeof State.dropParent === 'number') Actions.expTabsBranch(State.dropParent)
+      if (typeof State.dropParent === 'string') Actions.expandBookmark(State.dropParent)
 
       // Start expand animation
       this.pointerExpanding = true

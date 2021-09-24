@@ -360,7 +360,7 @@ export default {
       this.dragExpTimeout = setTimeout(() => {
         this.dragExpTimeout = null
         if (!State.dragMode) return
-        Actions.toggleBranch(this.tab.id)
+        Actions.expTabsBranch(this.tab.id)
         Actions.updatePanelBoundsDebounced(128)
       }, State.dndExpDelay)
     },

@@ -125,7 +125,7 @@ export default {
   'settings.dnd_mod_shift': { message: 'shift' },
   'settings.dnd_mod_ctrl': { message: 'ctrl' },
   'settings.dnd_mod_none': { message: 'none' },
-  'settings.dnd_exp': { message: 'Expand/Fold the branch on hovering over the' },
+  'settings.dnd_exp': { message: 'Expand the branch on hovering over the' },
   'settings.dnd_exp_pointer': { message: "pointer's triangle" },
   'settings.dnd_exp_hover': { message: 'tab/bookmark' },
   'settings.dnd_exp_none': { message: 'none' },
