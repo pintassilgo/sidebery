@@ -130,7 +130,7 @@ export default {
   'settings.dnd_mod_shift': { message: 'shift' },
   'settings.dnd_mod_ctrl': { message: 'ctrl' },
   'settings.dnd_mod_none': { message: 'выкл' },
-  'settings.dnd_exp': { message: 'Развернуть/свернуть ветвь при наведении на' },
+  'settings.dnd_exp': { message: 'Развернуть ветвь при наведении на' },
   'settings.dnd_exp_pointer': { message: 'треугольник указателя' },
   'settings.dnd_exp_hover': { message: 'вкладку/закладку' },
   'settings.dnd_exp_none': { message: 'выкл' },
