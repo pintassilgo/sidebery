@@ -1676,6 +1676,7 @@ function updateTabsVisibility() {
 
   let actPanel = this.state.panels[actPanelIndex]
   if (!actPanel || !actPanel.tabs) return
+  actPanel.isShowingTabs = true
 
   let toShow = []
   let toHide = []
