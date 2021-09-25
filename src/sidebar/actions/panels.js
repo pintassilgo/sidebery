@@ -254,11 +254,13 @@ function updatePanelBoundsDebounced(delay = 256) {
  * Switch current active panel by index
  */
 function switchToPanel(index, withoutTabActivation) {
+  let prevPanel = this.state.panels[this.state.panelIndex]
   this.actions.closeCtxMenu()
   this.actions.resetSelection()
   this.actions.setPanel(index)
 
   const panel = this.state.panels[this.state.panelIndex]
+  if (panel.type !== 'bookmarks') prevPanel.isShowingTabs = false
   if (panel.noEmpty && panel.tabs && !panel.tabs.length) {
     this.actions.createTabInPanel(panel)
   }
@@ -268,7 +270,14 @@ function switchToPanel(index, withoutTabActivation) {
   }
 
   this.actions.recalcPanelScroll()
-  this.actions.updateTabsVisibility()
+  if (
+    this.state.tabsMap[this.state.activeTabId].pinned &&
+    this.state.pinnedTabsPosition !== 'panel' &&
+    panel.type !== 'bookmarks' &&
+    !panel.isShowingTabs
+  ) {
+    this.actions.updateTabsVisibility()
+  }
   this.actions.updatePanelBoundsDebounced()
   this.actions.savePanelIndex()
 }
@@ -318,6 +327,8 @@ function switchPanel(dir = 0) {
   this.actions.closeCtxMenu()
   this.actions.resetSelection()
 
+  let prevPanel = this.state.panels[this.state.panelIndex]
+
   // Restore prev front panel
   if (this.state.panelIndex < 0) {
     if (this.state.lastPanelIndex < 0) this.state.panelIndex = 0
@@ -344,17 +355,27 @@ function switchPanel(dir = 0) {
     this.state.selectBookmarkFolder = null
   }
 
+  let panel = this.state.panels[this.state.panelIndex]
+  if (panel.type !== 'bookmarks') prevPanel.isShowingTabs = false
+
   if (this.state.activateLastTabOnPanelSwitching) {
     this.actions.activateLastActiveTabOf(this.state.panelIndex)
   }
 
-  let panel = this.state.panels[this.state.panelIndex]
   if (panel.noEmpty && panel.tabs && !panel.tabs.length) {
     this.actions.createTabInPanel(panel)
   }
 
   this.actions.recalcPanelScroll()
-  this.actions.updateTabsVisibility()
+  if (
+    this.state.tabsMap[this.state.activeTabId].pinned &&
+    this.state.pinnedTabsPosition !== 'panel' &&
+    panel.type !== 'bookmarks' &&
+    !panel.isShowingTabs
+  ) {
+    prevPanel.isShowingTabs = false
+    this.actions.updateTabsVisibility()
+  }
   this.actions.updatePanelBoundsDebounced()
 }
 

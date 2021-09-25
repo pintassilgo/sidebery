@@ -750,12 +750,28 @@ function onTabActivated(info) {
     panel.updated.splice(i, 1)
   }
 
+  if (
+    currentPanel !== panel &&
+    (!tab.pinned ||
+    this.state.pinnedTabsPosition === 'panel')
+  ) {
+    currentPanel.isShowingTabs = false
+  }
+
   // Switch to activated tab's panel
   if (
     (!tab.pinned || this.state.pinnedTabsPosition === 'panel') &&
     (!currentPanel || !currentPanel.lockedPanel)
   ) {
     this.actions.setPanel(panel.index)
+  }
+
+  let actualCurrentPannel = this.state.panels[this.state.panelIndex]
+  if (
+    !actualCurrentPannel.isShowingTabs &&
+    actualCurrentPannel.type !== 'bookmarks'
+  ) {
+    this.actions.updateTabsVisibility()
   }
 
   // Propagate access time to parent tabs for autoFolding feature
