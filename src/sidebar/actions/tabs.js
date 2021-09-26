@@ -1627,9 +1627,11 @@ async function moveTabsToPanel(tabIds, panelId) {
   if (!activePanel || !activePanel.tabs) return
 
   let tabs = []
+  let activeTabMoved
   for (let tabId of tabIds) {
     let tab = this.state.tabsMap[tabId]
     if (!tab) continue
+    if (tab.active) activeTabMoved = true
     tabs.push(tab)
   }
   let targetPanel = this.state.panelsMap[panelId]
@@ -1644,6 +1646,7 @@ async function moveTabsToPanel(tabIds, panelId) {
   }
   this.actions.saveTabsData()
   tabs.forEach(t => this.actions.saveTabData(t))
+  if (activeTabMoved) this.actions.updateTabsVisibility()
 }
 
 /**
