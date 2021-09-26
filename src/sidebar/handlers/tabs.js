@@ -606,6 +606,7 @@ function onTabMoved(id, info) {
       if (srcPanel !== destPanel) {
         srcPanel.lastActiveTab = null
         if (srcPanel.index < destPanel.index) panelIndex++
+        if (movedTab.active) srcPanel.isShowingTabs = false
       }
       destPanel.tabs.splice(panelIndex, 0, movedTab)
       movedTab.panelId = destPanel.id
@@ -631,10 +632,12 @@ function onTabMoved(id, info) {
   }
 
   if (
-    movedTab.active &&
-    this.state.panelsMap[movedTab.panelId].index !== this.state.panelIndex
+    !movedTab.active &&
+    srcPanel !== destPanel &&
+    (this.state.panels[this.state.panelIndex] === srcPanel ||
+    this.state.panels[this.state.panelIndex] === destPanel)
   ) {
-    this.actions.setPanel(this.state.panelsMap[movedTab.panelId].index)
+    this.actions.updateTabsVisibility()
   }
 
   if (!this.state.movingTabs.length) this.actions.saveTabsData()

@@ -1646,7 +1646,6 @@ async function moveTabsToPanel(tabIds, panelId) {
   }
   this.actions.saveTabsData()
   tabs.forEach(t => this.actions.saveTabData(t))
-  if (activeTabMoved) this.actions.updateTabsVisibility()
 }
 
 /**
@@ -2819,7 +2818,10 @@ async function checkUrlRules(url, tab) {
   }
   urlRuleHistory[panelId] = url
 
-  if (tab.active) this.actions.switchToPanel(panel.index, true)
+  if (tab.active) {
+    this.actions.switchToPanel(panel.index, true)
+    this.actions.updateTabsVisibility()
+  }
 }
 
 function updateHighlightedTabs(delay = 250) {
