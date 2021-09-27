@@ -1646,6 +1646,7 @@ async function moveTabsToPanel(tabIds, panelId) {
   }
   this.actions.saveTabsData()
   tabs.forEach(t => this.actions.saveTabData(t))
+  if (activeTabMoved) this.actions.updateTabsVisibility()
 }
 
 /**
