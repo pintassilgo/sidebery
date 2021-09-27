@@ -589,29 +589,20 @@ function onTabMoved(id, info) {
     srcPanel = this.state.panelsMap[movedTab.panelId]
     destPanel = this.state.panelsMap[movedTab.destPanelId]
     movedTab.destPanelId = undefined
-    if (
-      !destPanel ||
-      destPanel.startIndex > info.toIndex ||
-      destPanel.endIndex + 1 < info.toIndex
-    ) {
-      destPanel = this.state.panelsMap[toTab.panelId]
-    }
 
-    if (srcPanel && srcPanel.tabs && destPanel && destPanel.tabs) {
-      let t = srcPanel.tabs[info.fromIndex - srcPanel.startIndex]
-      if (t && t.id === movedTab.id) {
-        srcPanel.tabs.splice(info.fromIndex - srcPanel.startIndex, 1)
-      }
-      let panelIndex = info.toIndex - destPanel.startIndex
-      if (srcPanel !== destPanel) {
-        srcPanel.lastActiveTab = null
-        if (srcPanel.index < destPanel.index) panelIndex++
-        if (movedTab.active) srcPanel.isShowingTabs = false
-      }
-      destPanel.tabs.splice(panelIndex, 0, movedTab)
-      movedTab.panelId = destPanel.id
-      this.actions.updatePanelsRanges()
+    let t = srcPanel.tabs[info.fromIndex - srcPanel.startIndex]
+    if (t && t.id === movedTab.id) {
+      srcPanel.tabs.splice(info.fromIndex - srcPanel.startIndex, 1)
     }
+    let panelIndex = info.toIndex - destPanel.startIndex
+    if (srcPanel !== destPanel) {
+      srcPanel.lastActiveTab = null
+      if (srcPanel.index < destPanel.index) panelIndex++
+      if (movedTab.active) srcPanel.isShowingTabs = false
+    }
+    destPanel.tabs.splice(panelIndex, 0, movedTab)
+    movedTab.panelId = destPanel.id
+    this.actions.updatePanelsRanges()
   }
 
   // Calc tree levels
