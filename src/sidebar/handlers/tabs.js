@@ -334,6 +334,9 @@ function onTabUpdated(tabId, change, tab) {
         this.actions.updatePanelsRanges()
       }
       if (tab.active) this.actions.setPanel(panel.index)
+      if (tab.panelId !== this.state.panels[this.state.panelIndex].id) {
+        this.actions.updateTabsVisibility()
+      }
     }
   }
 
