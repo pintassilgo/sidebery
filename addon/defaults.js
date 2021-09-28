@@ -47,7 +47,6 @@ export const SETTINGS_OPTIONS = {
   dndExpModOpts: ['alt', 'shift', 'ctrl', 'none'],
   animationSpeedOpts: ['fast', 'norm', 'slow'],
   tabsFixOpts: ['reinit', 'notify'],
-  treeRmOutdentOpts: ['branch', 'first_child'],
 }
 
 export const DEFAULT_SETTINGS = {
@@ -140,7 +139,6 @@ export const DEFAULT_SETTINGS = {
   discardFoldedDelay: 0,
   discardFoldedDelayUnit: 'sec',
   tabsTreeBookmarks: true,
-  treeRmOutdent: 'branch',
 
   // Bookmarks
   bookmarksPanel: true,

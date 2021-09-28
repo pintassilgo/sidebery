@@ -424,7 +424,6 @@ function onTabRemoved(tabId, info, childfree) {
   // Handle child tabs
   if (this.state.tabsTree && tab.isParent && !childfree) {
     const toRemove = []
-    let outdentOnlyFirstChild = this.state.treeRmOutdent === 'first_child'
     let firstChild
     for (let i = tab.index + 1, t; i < this.state.tabs.length; i++) {
       t = this.state.tabs[i]
@@ -437,12 +436,8 @@ function onTabRemoved(tabId, info, childfree) {
 
       // Down level
       if (t.parentId === tab.id) {
-        if (outdentOnlyFirstChild) {
-          if (!firstChild) t.parentId = tab.parentId
-          else t.parentId = firstChild.id
-        } else {
-          t.parentId = tab.parentId
-        }
+        if (!firstChild) t.parentId = tab.parentId
+        else t.parentId = firstChild.id
       }
 
       if (!firstChild && t.lvl > tab.lvl) firstChild = t
