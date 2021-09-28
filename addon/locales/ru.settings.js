@@ -230,7 +230,6 @@ export default {
   'settings.auto_fold_tabs_except_4': { message: '4' },
   'settings.auto_fold_tabs_except_5': { message: '5' },
   'settings.auto_fold_tabs_except_none': { message: 'выкл' },
-  'settings.auto_exp_tabs': { message: 'Автоматически разворачивать вкладки' },
   'settings.tabs_child_count': { message: 'Показывать количество потомков на свернутой вкладке' },
   'settings.tabs_lvl_dots': { message: 'Показывать отметки уровней вложенности' },
   'settings.tabs_tree_bookmarks': {

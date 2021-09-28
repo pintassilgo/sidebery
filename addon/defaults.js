@@ -126,7 +126,6 @@ export const DEFAULT_SETTINGS = {
   hideFoldedTabs: false,
   autoFoldTabs: false,
   autoFoldTabsExcept: 'none',
-  autoExpandTabs: false,
   tabsChildCount: true,
   tabsLvlDots: false,
   tabsTreeBookmarks: true,

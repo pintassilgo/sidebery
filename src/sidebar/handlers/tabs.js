@@ -783,18 +783,6 @@ function onTabActivated(info) {
     }
   }
 
-  // Auto expand tabs group
-  if (this.state.autoExpandTabs && tab.isParent && tab.folded && !this.dragMode) {
-    let prevActiveChild
-    for (let i = tab.index + 1; i < this.state.tabs.length; i++) {
-      if (this.state.tabs[i].lvl <= tab.lvl) break
-      if (this.state.tabs[i].id === info.previousTabId) {
-        prevActiveChild = true
-        break
-      }
-    }
-    if (!prevActiveChild) this.actions.expTabsBranch(tab.id)
-  }
   if (tab.invisible) {
     this.actions.expTabsBranch(tab.parentId)
   }

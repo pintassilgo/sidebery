@@ -36,11 +36,6 @@ section
       :opts="$store.state.autoFoldTabsExceptOpts"
       @input="setOpt('autoFoldTabsExcept', $event)")
   ToggleField(
-    label="settings.auto_exp_tabs"
-    :inactive="!$store.state.tabsTree"
-    :value="$store.state.autoExpandTabs"
-    @input="setOpt('autoExpandTabs', $event)")
-  ToggleField(
     label="settings.tabs_child_count"
     :inactive="!$store.state.tabsTree"
     :value="$store.state.tabsChildCount"
