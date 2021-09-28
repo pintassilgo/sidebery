@@ -237,16 +237,6 @@ export default {
   'settings.rm_child_tabs_none': { message: 'выкл' },
   'settings.tabs_child_count': { message: 'Показывать количество потомков на свернутой вкладке' },
   'settings.tabs_lvl_dots': { message: 'Показывать отметки уровней вложенности' },
-  'settings.discard_folded': { message: 'Выгружать свернутые вкладки' },
-  'settings.discard_folded_delay': { message: 'Через' },
-  'settings.discard_folded_delay_sec': {
-    message: ['секунда', 'секунды', 'секунд'],
-    plur: [/^(1|(\d*?)[^1]1)$/, /^([234]|(\d*?)[^1][234])$/],
-  },
-  'settings.discard_folded_delay_min': {
-    message: ['минута', 'минуты', 'минут'],
-    plur: [/^(1|(\d*?)[^1]1)$/, /^([234]|(\d*?)[^1][234])$/],
-  },
   'settings.tabs_tree_bookmarks': {
     message: 'Сохранять древовидную структуру при создании закладок',
   },

@@ -224,10 +224,6 @@ export default {
   'settings.rm_child_tabs_none': { message: 'none' },
   'settings.tabs_child_count': { message: 'Show count of descendants on the folded tab' },
   'settings.tabs_lvl_dots': { message: 'Show marks to indicate tabs sub-tree levels' },
-  'settings.discard_folded': { message: 'Unload folded tabs' },
-  'settings.discard_folded_delay': { message: 'With delay' },
-  'settings.discard_folded_delay_sec': { message: ['second', 'seconds'], plur: [1] },
-  'settings.discard_folded_delay_min': { message: ['minute', 'minutes'], plur: [1] },
   'settings.tabs_tree_bookmarks': { message: 'Preserve tree on creating bookmarks' },
 
   // --- Bookmarks

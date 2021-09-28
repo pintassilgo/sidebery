@@ -8,7 +8,6 @@ export const SETTINGS_OPTIONS = {
   navMidClickActionOpts: ['rm_act_tab', 'rm_all', 'none'],
   groupLayoutOpts: ['grid', 'list'],
   scrollThroughTabsOpts: ['panel', 'global', 'none'],
-  discardFoldedDelayUnitOpts: ['sec', 'min'],
   tabDoubleClickOpts: [
     'reload', 'duplicate', 'pin', 'mute', 'clear_cookies', 'exp', 'new_after', 'new_child',
     'close', 'none',
@@ -132,9 +131,6 @@ export const DEFAULT_SETTINGS = {
   rmChildTabs: 'none',
   tabsChildCount: true,
   tabsLvlDots: false,
-  discardFolded: false,
-  discardFoldedDelay: 0,
-  discardFoldedDelayUnit: 'sec',
   tabsTreeBookmarks: true,
 
   // Bookmarks

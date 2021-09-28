@@ -58,21 +58,6 @@ section
     :value="$store.state.tabsLvlDots"
     @input="setOpt('tabsLvlDots', $event)")
   ToggleField(
-    label="settings.discard_folded"
-    :inactive="!$store.state.tabsTree"
-    :value="$store.state.discardFolded"
-    @input="setOpt('discardFolded', $event)")
-  .sub-fields
-    NumField.-last(
-      label="settings.discard_folded_delay"
-      unitLabel="settings.discard_folded_delay_"
-      :inactive="!$store.state.tabsTree || !$store.state.discardFolded"
-      :value="$store.state.discardFoldedDelay"
-      :or="0"
-      :unit="$store.state.discardFoldedDelayUnit"
-      :unitOpts="$store.state.discardFoldedDelayUnitOpts"
-      @input="setOpt('discardFoldedDelay', $event[0]), setOpt('discardFoldedDelayUnit', $event[1])")
-  ToggleField(
     label="settings.tabs_tree_bookmarks"
     :inactive="!$store.state.tabsTree"
     :value="$store.state.tabsTreeBookmarks"
