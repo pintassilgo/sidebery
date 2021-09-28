@@ -12,19 +12,6 @@ section
       :inactive="!$store.state.markWindow"
       :value="$store.state.markWindowPreface"
       @input="setOpt('markWindowPreface', $event)")
-  ToggleField(
-    label="settings.tabs_check"
-    :value="$store.state.tabsCheck"
-    @input="setOpt('tabsCheck', $event)")
-  .sub-fields
-    SelectField(
-      label="settings.tabs_fix"
-      optLabel="settings.tabs_fix_"
-      :note="t('settings.tabs_fix_desc')"
-      :inactive="!$store.state.tabsCheck"
-      :value="$store.state.tabsFix"
-      :opts="$store.state.tabsFixOpts"
-      @input="setOpt('tabsFix', $event)")
   .ctrls
     a.btn(@click="$store.state.exportConfig = true") {{t('settings.help_exp_data')}}
     .btn(type="file")

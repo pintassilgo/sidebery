@@ -336,7 +336,6 @@ async function loadTabsFromInlineData(tabs, dataTabIndex) {
 function saveTabsData(delay = 300) {
   if (this._saveTabsDataTimeout) clearTimeout(this._saveTabsDataTimeout)
   this._saveTabsDataTimeout = setTimeout(() => {
-    if (this.state.tabsNormalizing) return
     let data = []
     let pinnedLen = 0
     for (let tab of this.state.tabs) {
@@ -347,20 +346,6 @@ function saveTabsData(delay = 300) {
       if (tab.folded) info.folded = tab.folded
       if (tab.cookieStoreId !== DEFAULT_CTX_ID) info.ctx = tab.cookieStoreId
       data.push(info)
-    }
-
-    // Check tabs and panels ordering
-    if (this.state.tabsCheck && this.actions.checkTabsPositioning(pinnedLen)) {
-      if (this.state.tabsFix === 'notify') {
-        this.actions.notify({
-          title: translate('notif.tabs_err'),
-          lvl: 'err',
-          ctrl: translate('notif.tabs_err_fix'),
-          callback: async () => this.actions.normalizeTabs(120),
-        })
-      }
-      if (this.state.tabsFix === 'reinit') this.actions.normalizeTabs(500)
-      return
     }
 
     if (this.state.bg && !this.state.bg.error) {
@@ -444,87 +429,6 @@ function checkTabsPositioning(startIndex) {
   }
   if (index !== this.state.tabs.length) err = true
   return err
-}
-
-/**
- * Load tabs and normalize order.
- */
-function normalizeTabs(delay = 500) {
-  if (!this.state.tabsNormalizing) this.state.tabsNormalizing = true
-  if (this._normTabsTimeout) clearTimeout(this._normTabsTimeout)
-  this._normTabsTimeout = setTimeout(async () => {
-    this._normTabsTimeout = null
-
-    let panels = []
-    for (let panel of this.state.panels) {
-      if (panel.tabs) panels.push({ id: panel.id, index: -1 })
-    }
-
-    let normTabs = []
-    let normTabsMap = []
-    let nativeTabs = await browser.tabs.query({ windowId: browser.windows.WINDOW_ID_CURRENT })
-    let moves = []
-    let panelId
-    let index = 0
-    let panelIndex = 0
-    for (let nativeTab of nativeTabs) {
-      let tab = this.state.tabs.find(t => t.id === nativeTab.id)
-      if (tab) {
-        tab.index = index++
-        tab.status = 'complete'
-        tab.active = nativeTab.active
-
-        if (!tab.pinned) {
-          if (panels[panelIndex].id !== tab.panelId) {
-            let pi = panels.findIndex(p => {
-              if (p.index === -1) p.index = index - 1
-              return p.id === tab.panelId
-            })
-            if (pi > panelIndex) {
-              panelIndex = pi
-              panels[panelIndex].index = index
-            } else {
-              moves.push([tab.id, panels[pi].index])
-              for (let i = pi; i < panels.length; i++) {
-                panels[i].index++
-              }
-            }
-          } else {
-            panels[panelIndex].index = index
-          }
-        }
-
-        normTabs.push(tab)
-        normTabsMap[tab.id] = tab
-        panelId = tab.panelId
-      } else {
-        Utils.normalizeTab(nativeTab, panelId)
-        normTabs.push(nativeTab)
-        normTabsMap[nativeTab.id] = nativeTab
-        index++
-      }
-    }
-
-    if (moves.length && !this._normTabsMoving) {
-      this._normTabsMoving = true
-      let moving = moves.map(m => browser.tabs.move(m[0], { index: m[1] }))
-      await Promise.all(moving)
-      this.actions.normalizeTabs(0)
-      return
-    }
-
-    this.state.tabs = normTabs
-    this.state.tabsMap = normTabsMap
-    this.actions.updatePanelsTabs()
-    this.actions.updateTabsTree()
-
-    this.state.tabsNormalizing = false
-    this._normTabsMoving = false
-
-    this.actions.saveTabsData()
-    this.state.tabs.forEach(t => this.actions.saveTabData(t))
-    this.actions.saveGroups()
-  }, delay)
 }
 
 /**
@@ -2752,7 +2656,6 @@ export default {
   saveTabData,
   saveGroups,
   checkTabsPositioning,
-  normalizeTabs,
   linkGroupWithPinnedTab,
   replaceRelGroupWithPinnedTab,
 
