@@ -40,13 +40,6 @@ section
     :inactive="!$store.state.tabsTree"
     :value="$store.state.autoExpandTabs"
     @input="setOpt('autoExpandTabs', $event)")
-  SelectField(
-    label="settings.rm_child_tabs"
-    optLabel="settings.rm_child_tabs_"
-    :inactive="!$store.state.tabsTree"
-    :value="$store.state.rmChildTabs"
-    :opts="$store.state.rmChildTabsOpts"
-    @input="setOpt('rmChildTabs', $event)")
   ToggleField(
     label="settings.tabs_child_count"
     :inactive="!$store.state.tabsTree"

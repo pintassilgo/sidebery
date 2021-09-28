@@ -427,7 +427,7 @@ function onTabRemoved(tabId, info, childfree) {
       if (t.lvl <= tab.lvl) break
 
       // Remove folded tabs
-      if ((this.state.rmChildTabs === 'folded' && tab.folded) || this.state.rmChildTabs === 'all') {
+      if (tab.folded) {
         if (!this.state.removingTabs.includes(t.id)) toRemove.push(t.id)
       }
 
@@ -441,9 +441,7 @@ function onTabRemoved(tabId, info, childfree) {
     }
 
     // Remove child tabs
-    if (this.state.rmChildTabs !== 'none' && toRemove.length) {
-      this.actions.removeTabs(toRemove)
-    }
+    if (toRemove.length) this.actions.removeTabs(toRemove)
   }
 
   // Update last active tab if needed

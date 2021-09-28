@@ -303,8 +303,6 @@ function createGroupUrl(name, conf) {
 function findSuccessorTab(state, tab, exclude) {
   let target
   let isNextTree = state.activateAfterClosingNextRule === 'tree'
-  let rmFolded = state.rmChildTabs === 'folded'
-  let rmChild = state.rmChildTabs === 'all'
   let isPrevTree = state.activateAfterClosingPrevRule === 'tree'
   let isPrevVisible = state.activateAfterClosingPrevRule === 'visible'
   let skipFolded = state.activateAfterClosingNoFolded
@@ -372,10 +370,7 @@ function findSuccessorTab(state, tab, exclude) {
       if (exclude && exclude.includes(next.id)) continue
 
       // Next invisible tab will be removed too
-      if (rmFolded && next.invisible) continue
-
-      // Next child tab will be removed too
-      if (rmChild && next.lvl > tab.lvl) continue
+      if (next.invisible) continue
 
       // Skip discarded tab
       if (skipDiscarded && next.discarded) continue
@@ -472,10 +467,7 @@ function findSuccessorTab(state, tab, exclude) {
         if (exclude && exclude.includes(next.id)) continue
 
         // Next invisible tab will be removed too
-        if (rmFolded && next.invisible) continue
-
-        // Next child tab will be removed too
-        if (rmChild && next.lvl > tab.lvl) continue
+        if (next.invisible) continue
 
         // Skip discarded tab
         if (skipDiscarded && next.discarded) continue

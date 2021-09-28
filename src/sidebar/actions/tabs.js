@@ -573,7 +573,7 @@ async function removeTabs(tabIds) {
     tabsMap[id] = tab
     if (tab.invisible) hasInvisibleTab = true
 
-    if ((this.state.rmChildTabs === 'folded' && tab.folded) || this.state.rmChildTabs === 'all') {
+    if (tab.folded) {
       for (let t, i = tab.index + 1; i < this.state.tabs.length; i++) {
         t = this.state.tabs[i]
         if (t.lvl <= tab.lvl) break
