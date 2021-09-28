@@ -42,17 +42,13 @@ export default {
 
   computed: {
     pinnedTabs() {
-      if (State.pinnedTabsPosition === 'panel') {
-        return this.$store.getters.pinnedTabs.filter(t => t.panelId === this.panelId)
-      } else {
-        return this.$store.getters.pinnedTabs
-      }
+       return this.$store.getters.pinnedTabs
     },
   },
 
   methods: {
     onWheel(e) {
-      if (State.pinnedTabsPosition !== 'panel' && State.scrollThroughTabs !== 'none') {
+      if (State.scrollThroughTabs !== 'none') {
         const globaly = (State.scrollThroughTabs === 'global') ^ e.shiftKey
         const cyclic = State.scrollThroughTabsCyclic ^ e.ctrlKey
 

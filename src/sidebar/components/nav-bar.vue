@@ -101,12 +101,6 @@ export default {
           btn.inactive = true
         }
 
-        if (btn.tabs && State.pinnedTabsPosition === 'panel') {
-          let pinned = getters.pinnedTabs.filter(t => t.panelId === btn.id)
-          pinnedTabs = pinned.length > 0
-          btn.len += pinned.length
-        }
-
         if (
           State.hideEmptyPanels &&
           btn.tabs &&
@@ -252,11 +246,6 @@ export default {
       if (State.navMidClickAction === 'rm_all') {
         if (!btn.tabs) return
         let toRemove = btn.tabs.map(t => t.id)
-        if (State.pinnedTabsPosition === 'panel') {
-          for (let pinned of getters.pinnedTabs) {
-            if (pinned.panelId === btn.id) toRemove.push(pinned.id)
-          }
-        }
 
         if (toRemove.length) Actions.removeTabs(toRemove)
       }

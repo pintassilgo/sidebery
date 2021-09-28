@@ -311,36 +311,30 @@ function findSuccessorTab(state, tab, exclude) {
   if (state.removingTabs && !exclude) exclude = state.removingTabs
 
   if (tab.pinned) {
-    let pinInPanels = state.pinnedTabsPosition === 'panel'
     if (state.tabsMap[tab.relGroupId]) return state.tabsMap[tab.relGroupId]
     if (state.activateAfterClosing === 'prev') {
       for (let i = tab.index; i--; ) {
         if (!state.tabs[i].pinned) break
-        if (pinInPanels && state.tabs[i].panelId === tab.panelId) return state.tabs[i]
-        else if (!pinInPanels) return state.tabs[i]
+        return state.tabs[i]
       }
       for (let i = tab.index + 1; i < state.tabs.length; i++) {
         if (!state.tabs[i].pinned) break
-        if (pinInPanels && state.tabs[i].panelId === tab.panelId) return state.tabs[i]
-        else if (!pinInPanels) return state.tabs[i]
+        return state.tabs[i]
       }
     }
     if (state.activateAfterClosing === 'next') {
       for (let i = tab.index + 1; i < state.tabs.length; i++) {
         if (!state.tabs[i].pinned) break
-        if (pinInPanels && state.tabs[i].panelId === tab.panelId) return state.tabs[i]
-        else if (!pinInPanels) return state.tabs[i]
+        return state.tabs[i]
       }
       for (let i = tab.index; i--; ) {
         if (!state.tabs[i].pinned) break
-        if (pinInPanels && state.tabs[i].panelId === tab.panelId) return state.tabs[i]
-        else if (!pinInPanels) return state.tabs[i]
+        return state.tabs[i]
       }
     }
 
     if (state.activateAfterClosing === 'next' || state.activateAfterClosing === 'prev') {
       let panel = state.panelsMap[tab.panelId]
-      if (pinInPanels && panel.tabs.length) return panel.tabs[0]
     }
   }
 

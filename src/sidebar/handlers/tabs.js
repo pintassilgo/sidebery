@@ -301,7 +301,7 @@ function onTabUpdated(tabId, change, tab) {
         if (!URL_HOST_PATH_RE.test(localTab.title) && !URL_HOST_PATH_RE.test(tab.title)) {
           let panel = this.state.panelsMap[localTab.panelId]
           localTab.updated = true
-          if (!tab.pinned || this.state.pinnedTabsPosition === 'panel') {
+          if (!tab.pinned) {
             if (!panel.updated.includes(tabId)) panel.updated.push(tabId)
           }
         }
@@ -359,7 +359,7 @@ function onTabUpdated(tabId, change, tab) {
     if (!panel.tabs.length) {
       if (panel.noEmpty) {
         this.actions.createTabInPanel(panel)
-      } else if (this.state.pinnedTabsPosition !== 'panel') {
+      } else {
         this.actions.switchToNeighbourPanel()
       }
     }
@@ -706,7 +706,7 @@ function onTabActivated(info) {
       if (box.actTabs.length > 128) box.actTabs = box.actTabs.slice(32)
       box.actTabs.push(prevActive.id)
 
-      if (!prevActive.pinned || this.state.pinnedTabsPosition === 'panel') {
+      if (!prevActive.pinned) {
         box = this.state.panelsMap[prevActive.panelId]
         if (!box.actTabs) box.actTabs = []
         if (
@@ -742,15 +742,14 @@ function onTabActivated(info) {
 
   if (
     currentPanel !== panel &&
-    (!tab.pinned ||
-    this.state.pinnedTabsPosition === 'panel')
+    !tab.pinned
   ) {
     currentPanel.isShowingTabs = false
   }
 
   // Switch to activated tab's panel
   if (
-    (!tab.pinned || this.state.pinnedTabsPosition === 'panel') &&
+    !tab.pinned &&
     (!currentPanel || !currentPanel.lockedPanel)
   ) {
     this.actions.setPanel(panel.index)

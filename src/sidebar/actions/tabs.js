@@ -707,7 +707,7 @@ function switchTab(globaly, cycle, step, pinned) {
     this.state.switchTabPause = null
   }, 50)
 
-  let pinnedAndPanel = this.state.pinnedTabsPosition === 'panel' || (globaly && cycle)
+  let pinnedAndPanel = globaly && cycle
   let visibleOnly = this.state.scrollThroughVisibleTabs
   let skipDiscarded = this.state.scrollThroughTabsSkipDiscarded
 

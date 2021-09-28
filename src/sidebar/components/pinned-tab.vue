@@ -57,7 +57,7 @@ export default {
 
   computed: {
     withTitle() {
-      return State.pinnedTabsPosition === 'panel' && State.pinnedTabsList
+      return State.pinnedTabsList
     },
   },
 }

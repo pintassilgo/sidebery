@@ -272,7 +272,6 @@ function switchToPanel(index, withoutTabActivation) {
   this.actions.recalcPanelScroll()
   if (
     this.state.tabsMap[this.state.activeTabId].pinned &&
-    this.state.pinnedTabsPosition !== 'panel' &&
     panel.type !== 'bookmarks' &&
     !panel.isShowingTabs
   ) {
@@ -369,7 +368,6 @@ function switchPanel(dir = 0) {
   this.actions.recalcPanelScroll()
   if (
     this.state.tabsMap[this.state.activeTabId].pinned &&
-    this.state.pinnedTabsPosition !== 'panel' &&
     panel.type !== 'bookmarks' &&
     !panel.isShowingTabs
   ) {

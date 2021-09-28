@@ -9,7 +9,6 @@ section
     @input="switchPinnedTabsPosition")
   ToggleField(
     label="settings.pinned_tabs_list"
-    :inactive="$store.state.pinnedTabsPosition !== 'panel'"
     :value="$store.state.pinnedTabsList"
     @input="setOpt('pinnedTabsList', $event)")
 </template>
