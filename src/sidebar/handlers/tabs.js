@@ -126,9 +126,6 @@ function onTabCreated(tab) {
           tab.parentId = tab.openerTabId
           const start = panel.startIndex
           this.actions.updateTabsTree(start, tab.index + 1)
-          if (this.state.autoFoldTabs && !parent.folded) {
-            this.actions.expTabsBranch(tab.parentId)
-          }
         } else {
           tab.parentId = -1
           browser.tabs.update(tab.id, { openerTabId: tab.id })
@@ -765,22 +762,6 @@ function onTabActivated(info) {
     actualCurrentPannel.type !== 'bookmarks'
   ) {
     this.actions.updateTabsVisibility()
-  }
-
-  // Propagate access time to parent tabs for autoFolding feature
-  if (
-    this.state.tabsTree &&
-    tab.parentId > -1 &&
-    this.state.autoFoldTabs &&
-    this.state.autoFoldTabsExcept > 0
-  ) {
-    let parent = this.state.tabsMap[tab.parentId]
-    if (parent) {
-      parent.childLastAccessed = tab.lastAccessed
-      while ((parent = this.state.tabsMap[parent.parentId])) {
-        parent.childLastAccessed = tab.lastAccessed
-      }
-    }
   }
 
   if (tab.invisible) {

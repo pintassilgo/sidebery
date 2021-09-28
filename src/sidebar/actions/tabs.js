@@ -1484,7 +1484,6 @@ function foldTabsBranch(tabId) {
 function expTabsBranch(tabId) {
   const toShow = []
   const preserve = []
-  let autoFold = []
 
   const tab = this.state.tabsMap[tabId]
   if (!tab) return
@@ -1492,12 +1491,8 @@ function expTabsBranch(tabId) {
   const panel = this.state.panelsMap[tab.panelId]
   if (!panel) return
 
-  tab.lastAccessed = Date.now()
   if (tab.invisible) this.actions.expTabsBranch(tab.parentId)
   for (let t of panel.tabs) {
-    if (this.state.autoFoldTabs && t.id !== tabId && t.isParent && !t.folded && tab.lvl === t.lvl) {
-      autoFold.push(t)
-    }
     if (t.id === tabId) t.folded = false
     if (t.id !== tabId && t.folded) preserve.push(t.id)
     if (t.parentId === tabId || toShow.includes(t.parentId)) {
@@ -1505,24 +1500,6 @@ function expTabsBranch(tabId) {
         toShow.push(t.id)
         t.invisible = false
       }
-    }
-  }
-
-  // Auto fold
-  if (this.state.autoFoldTabs) {
-    autoFold.sort((a, b) => {
-      let aMax = a.lastAccessed
-      let bMax = b.lastAccessed
-      if (a.childLastAccessed) aMax = Math.max(a.lastAccessed, a.childLastAccessed)
-      if (b.childLastAccessed) bMax = Math.max(b.lastAccessed, b.childLastAccessed)
-      return aMax - bMax
-    })
-
-    if (this.state.autoFoldTabsExcept > 0) {
-      autoFold = autoFold.slice(0, -this.state.autoFoldTabsExcept)
-    }
-    for (let t of autoFold) {
-      this.actions.foldTabsBranch(t.id)
     }
   }
 

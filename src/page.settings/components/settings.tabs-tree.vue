@@ -23,19 +23,6 @@ section
     :value="$store.state.hideFoldedTabs"
     @input="toggleHideFoldedTabs")
   ToggleField(
-    label="settings.auto_fold_tabs"
-    :inactive="!$store.state.tabsTree"
-    :value="$store.state.autoFoldTabs"
-    @input="setOpt('autoFoldTabs', $event)")
-  .sub-fields
-    SelectField(
-      label="settings.auto_fold_tabs_except"
-      optLabel="settings.auto_fold_tabs_except_"
-      :inactive="!$store.state.tabsTree || !$store.state.autoFoldTabs"
-      :value="$store.state.autoFoldTabsExcept"
-      :opts="$store.state.autoFoldTabsExceptOpts"
-      @input="setOpt('autoFoldTabsExcept', $event)")
-  ToggleField(
     label="settings.tabs_child_count"
     :inactive="!$store.state.tabsTree"
     :value="$store.state.tabsChildCount"
