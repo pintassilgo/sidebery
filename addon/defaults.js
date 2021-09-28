@@ -182,13 +182,6 @@ export const DEFAULT_SETTINGS = {
   tabsPanelDoubleClickAction: 'tab',
   tabsPanelRightClickAction: 'menu',
   tabsPanelMiddleClickAction: 'tab',
-
-  // Sync
-  syncName: '',
-  syncSaveSettings: false,
-  syncSaveCtxMenu: false,
-  syncSaveStyles: false,
-  syncAutoApply: false,
 }
 
 export const CUSTOM_CSS_VARS = {

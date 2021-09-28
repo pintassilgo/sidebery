@@ -62,9 +62,6 @@
         :data-active="$store.state.activeSection === 'settings_storage'"
         @click="navigateTo('settings_storage')") {{t('settings.nav_settings_storage')}}
       .sub-option(
-        :data-active="$store.state.activeSection === 'settings_sync'"
-        @click="navigateTo('settings_sync')") {{t('settings.nav_settings_sync')}}
-      .sub-option(
         :data-active="$store.state.activeSection === 'settings_help'"
         @click="navigateTo('settings_help')") {{t('settings.nav_settings_help')}}
 

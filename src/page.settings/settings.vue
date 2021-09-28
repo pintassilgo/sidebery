@@ -18,7 +18,6 @@
   PermissionsSection(ref="settings_permissions")
   SnapshotsSection(ref="settings_snapshots")
   StorageSection(ref="settings_storage")
-  SyncSection(ref="settings_sync")
   HelpSection(ref="settings_help")
 
   .details-box(v-if="$store.state.dbgDetails" @wheel="onDbgWheel")
@@ -50,7 +49,6 @@ import KeybindingsSection from './components/settings.keybindings'
 import PermissionsSection from './components/settings.permissions'
 import SnapshotsSection from './components/settings.snapshots'
 import StorageSection from './components/settings.storage'
-import SyncSection from './components/settings.sync'
 import HelpSection from './components/settings.help'
 import FooterSection from './components/footer'
 
@@ -73,7 +71,6 @@ const SECTIONS = [
   'settings_permissions',
   'settings_snapshots',
   'settings_storage',
-  'settings_sync',
   'settings_help',
 ]
 
@@ -97,7 +94,6 @@ export default {
     PermissionsSection,
     SnapshotsSection,
     StorageSection,
-    SyncSection,
     HelpSection,
     FooterSection,
   },

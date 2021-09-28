@@ -21,7 +21,6 @@ export default {
   'settings.nav_settings_keybindings': { message: 'Клавиши' },
   'settings.nav_settings_permissions': { message: 'Разрешения' },
   'settings.nav_settings_storage': { message: 'Данные' },
-  'settings.nav_settings_sync': { message: 'Синхронизация' },
   'settings.nav_settings_help': { message: 'Помощь' },
 
   'settings.nav_menu': { message: 'Редактор меню' },
@@ -434,26 +433,6 @@ export default {
   'settings.update_storage_info': { message: 'Обновить' },
   'settings.clear_storage_info': { message: 'Удалить все' },
   'settings.clear_storage_confirm': { message: 'Вы действительно хотите удалить все данные?' },
-
-  // --- Sync
-  'settings.sync_title': { message: 'Синхронизация' },
-  'settings.sync_name': { message: 'Имя профиля для синхронизации' },
-  'settings.sync_name_or': { message: 'напр. Firefox Домашний' },
-  'settings.sync_save_settings': { message: 'Сохранять настройки в синхронизируемое хранилище' },
-  'settings.sync_save_ctx_menu': {
-    message: 'Сохранять контекстное меню в синхронизируемое хранилище',
-  },
-  'settings.sync_save_styles': { message: 'Сохранять стили в синхронизируемое хранилище' },
-  'settings.sync_auto_apply': { message: 'Автоматически применять изменения' },
-  'settings.sync_settings_title': { message: 'Настройки' },
-  'settings.sync_ctx_menu_title': { message: 'Контекстное меню' },
-  'settings.sync_styles_title': { message: 'Стили' },
-  'settings.sync_apply_btn': { message: 'Применить' },
-  'settings.sync_delete_btn': { message: 'Удалить' },
-  'settings.sync_update_btn': { message: 'Обновить данные' },
-  'settings.sync_apply_confirm': {
-    message: 'Вы действительно хотите применить синхронизированные данные?',
-  },
 
   // --- Help
   'settings.help_title': { message: 'Помощь' },
