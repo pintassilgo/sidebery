@@ -41,7 +41,6 @@ export const SETTINGS_OPTIONS = {
   warnOnMultiTabCloseOpts: ['any', 'collapsed', 'none'],
   warnOnMultiBookmarkDeleteOpts: ['any', 'collapsed', 'none'],
   navBarLayoutOpts: ['horizontal', 'vertical', 'hidden'],
-  stateStorageOpts: ['global', 'session'],
   autoFoldTabsExceptOpts: [1, 2, 3, 4, 5, 'none'],
   dndTabActModOpts: ['alt', 'shift', 'ctrl', 'none'],
   dndExpOpts: ['pointer', 'hover', 'none'],
@@ -94,7 +93,6 @@ export const DEFAULT_SETTINGS = {
   dndExpMod: 'none',
 
   // Tabs
-  stateStorage: 'global',
   warnOnMultiTabClose: 'collapsed',
   activateOnMouseUp: true,
   activateLastTabOnPanelSwitching: true,

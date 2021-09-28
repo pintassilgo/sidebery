@@ -155,22 +155,6 @@ function onTabDetached(id, info) {
 }
 
 /**
- * Backup tabs data
- */
-async function backupTabsData() {
-  let tabsData
-  try {
-    let storage = await browser.storage.local.get({ tabsData_v4: tabsData })
-    tabsData = storage.tabsData_v4
-  } catch (err) {
-    // Logs.push('[ERROR:BG] backupTabsData: ', err.toString())
-    return
-  }
-
-  await browser.storage.local.set({ prevTabsData_v4: tabsData })
-}
-
-/**
  * Save tabs of panels
  */
 function saveTabsData(windowId, tabs, delay = 300) {
@@ -266,7 +250,6 @@ export default {
   hideProxyBadge,
 
   updateTabsTree,
-  backupTabsData,
   saveTabsData,
 
   setupTabsListeners,

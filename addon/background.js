@@ -27,7 +27,6 @@ void (async function main() {
   state.settings = Utils.normalizeObject(settings, DEFAULT_SETTINGS)
 
   await Actions.loadTabs(state.windows, state.tabsMap)
-  await Actions.backupTabsData()
   Actions.setupTabsListeners()
 
   Actions.setupStorageListeners()

@@ -2,13 +2,6 @@
 section
   h2 {{t('settings.tabs_title')}}
   SelectField(
-    label="settings.state_storage"
-    optLabel="settings.state_storage_"
-    :note="t('settings.state_storage_desc')"
-    :value="$store.state.stateStorage"
-    :opts="$store.state.stateStorageOpts"
-    @input="setOpt('stateStorage', $event)")
-  SelectField(
     label="settings.warn_on_multi_tab_close"
     optLabel="settings.warn_on_multi_tab_close_"
     :value="$store.state.warnOnMultiTabClose"

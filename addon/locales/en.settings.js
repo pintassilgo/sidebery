@@ -45,14 +45,6 @@ export default {
   'settings.tabs_fix_reinit': { message: 'update tabs' },
   'settings.tabs_fix_notify': { message: 'notify' },
   'settings.tabs_fix_desc': { message: 'Note: Updating tabs may cause them to be rearranged' },
-  'settings.state_storage': { message: 'Where to store tabs data' },
-  'settings.state_storage_global': { message: 'global storage' },
-  'settings.state_storage_session': { message: 'session storage' },
-  'settings.state_storage_desc': {
-    message: `- global storage - fast, but inaccurate in rare cases.
-- session storage - more strict, but slower. (Warning: Tabs data will be removed along with Browser Session)
-  Note: If you have issues with incorrectly restored tabs, try to reopen sidebar and change this option.`,
-  },
 
   // --- Context menu
   'settings.ctx_menu_title': { message: 'Context menu' },
