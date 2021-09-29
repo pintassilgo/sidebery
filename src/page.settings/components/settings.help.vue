@@ -109,9 +109,7 @@ export default {
       try {
         dbg.permissions = {
           allUrls: State.permAllUrls,
-          tabHide: State.permTabHide,
           actualAllUrls: await browser.permissions.contains({ origins: ['<all_urls>'] }),
-          actualTabHide: await browser.permissions.contains({ permissions: ['tabHide'] }),
         }
       } catch (err) {
         dbg.permissions = err.toString()

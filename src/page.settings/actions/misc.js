@@ -31,7 +31,6 @@ async function loadBrowserInfo() {
  */
 async function loadPermissions(init) {
   this.state.permAllUrls = await browser.permissions.contains({ origins: ['<all_urls>'] })
-  this.state.permTabHide = await browser.permissions.contains({ permissions: ['tabHide'] })
   this.state.permClipboardWrite = await browser.permissions.contains({
     permissions: ['clipboardWrite'],
   })
@@ -49,12 +48,6 @@ async function loadPermissions(init) {
       if (c.userAgentActive) c.userAgentActive = false
     }
     if (!init) this.actions.saveContainersDebounced()
-  }
-
-  if (!this.state.permTabHide) {
-    this.state.hideInact = false
-    this.state.hideFoldedTabs = false
-    if (!init) this.actions.saveSettings()
   }
 
   if (!this.state.permWebRequestBlocking) {
@@ -106,7 +99,6 @@ async function updateActiveView() {
   await this.actions.waitForInit()
 
   if (hash === 'all-urls') return this.actions.goToPerm('all_urls')
-  if (hash === 'tab-hide') return this.actions.goToPerm('tab_hide')
   if (hash === 'clipboard-write') return this.actions.goToPerm('clipboard_write')
   if (hash === 'web-request-blocking') return this.actions.goToPerm('web_request_blocking')
   if (hash === 'proxy') return this.actions.goToPerm('proxy')

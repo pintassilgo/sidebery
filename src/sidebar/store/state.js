@@ -45,7 +45,6 @@ export default {
   snapshots: [],
   keybindings: [],
   permAllUrls: false,
-  permTabHide: false,
   permClipboardWrite: false,
 
   favicons: [],

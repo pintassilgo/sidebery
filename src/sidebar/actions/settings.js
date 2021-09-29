@@ -9,7 +9,6 @@ function updateSettings(settings) {
   if (!settings) return
 
   // Check what values was updated
-  let hideInactTabs = this.state.hideInact !== settings.hideInact
   let updateSuccessions =
     this.state.activateAfterClosing !== settings.activateAfterClosing ||
     this.state.activateAfterClosingPrevRule !== settings.activateAfterClosingPrevRule ||
@@ -50,7 +49,7 @@ function updateSettings(settings) {
     Actions.updateTabsTree()
   }
 
-  if (hideInactTabs || updateInvisTabs) {
+  if (updateInvisTabs) {
     Actions.updateTabsVisibility()
   }
 

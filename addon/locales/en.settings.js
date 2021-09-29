@@ -129,7 +129,6 @@ export default {
   'settings.skip_empty_panels': { message: 'Skip empty panels on switching' },
   'settings.show_tab_rm_btn': { message: 'Show close button on mouse hover' },
   'settings.show_tab_ctx': { message: 'Show colored mark of container' },
-  'settings.hide_inactive_panel_tabs': { message: 'Hide tabs of inactive panels' },
   'settings.activate_after_closing': { message: 'After closing current tab activate' },
   'settings.activate_after_closing_next': { message: 'next tab' },
   'settings.activate_after_closing_prev': { message: 'previous tab' },
@@ -340,10 +339,6 @@ export default {
   'settings.all_urls_info': {
     message:
       'Required for:\n- Cleaning cookies\n- Proxy and URL rules of containers\n- Screenshots for the group page and windows selection panel\n- Changing the User-Agent per container',
-  },
-  'settings.tab_hide_label': { message: 'Hiding tabs:' },
-  'settings.tab_hide_info': {
-    message: 'Required for:\n- Hiding tabs in inactive panels\n- Hiding folded tabs',
   },
   'settings.clipboard_write_label': { message: 'Writing to clipboard:' },
   'settings.clipboard_write_info': {

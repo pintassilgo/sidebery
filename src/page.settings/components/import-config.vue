@@ -64,7 +64,6 @@ export default {
       snapshots: false,
       permNeeded: false,
       permWebData: false,
-      permTabHide: false,
       permWebReqBlock: false,
       permProxy: false,
     }
@@ -176,11 +175,9 @@ export default {
     checkPermissions() {
       let webData = false
       let webReqBlock = false
-      let tabsHide = false
       let proxy = false
       this.permWebReqBlock = false
       this.permWebData = false
-      this.permTabHide = false
       this.permProxy = false
       this.permNeeded = false
 
@@ -199,11 +196,6 @@ export default {
         }
       }
 
-      if (this.settings && State.importConfig.settings) {
-        if (State.importConfig.settings.hideInact) tabsHide = true
-        if (State.importConfig.settings.hideFoldedTabs) tabsHide = true
-      }
-
       if (webReqBlock && !State.permWebRequestBlocking) {
         this.permWebReqBlock = true
         this.permWebData = true
@@ -211,10 +203,6 @@ export default {
       }
       if (webData && !State.permAllUrls) {
         this.permWebData = true
-        this.permNeeded = true
-      }
-      if (tabsHide && !State.permTabHide) {
-        this.permTabHide = true
         this.permNeeded = true
       }
       if (proxy && !State.permProxy) {
@@ -227,7 +215,6 @@ export default {
       const request = { origins: [], permissions: [] }
       if (this.permWebData) request.origins.push('<all_urls>')
       if (this.permWebReqBlock) request.permissions.push('webRequest', 'webRequestBlocking')
-      if (this.permTabHide) request.permissions.push('tabHide')
       if (this.permProxy) request.permissions.push('proxy')
       browser.permissions.request(request).then(allowed => {
         browser.runtime.sendMessage({ action: 'loadPermissions' })
@@ -238,10 +225,6 @@ export default {
         if (this.permWebReqBlock) {
           State.permWebRequestBlocking = allowed
           this.permWebReqBlock = !allowed
-        }
-        if (this.permTabHide) {
-          State.permTabHide = allowed
-          this.permTabHide = !allowed
         }
         if (this.permProxy) {
           State.permProxy = allowed

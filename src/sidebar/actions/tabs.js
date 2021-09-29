@@ -33,7 +33,6 @@ async function loadTabsFromSessionStorage() {
   let activeTab
   let idsMap = {}
 
-  const hideInact = this.state.hideInact
   const toMoveBeforeActivePanel = [];
   const toMoveAfterActivePanel = [];
 
@@ -84,13 +83,11 @@ async function loadTabsFromSessionStorage() {
       else tab.panelId = lastPanel.id
 
       // Record new tabs that need to be repositioned (for keeping new tabs
-      // within active panel when "hide tabs of inactive panel" is enabled) 
-      if (hideInact) {
-        if (activePanel.index < lastPanel.index) {
-          toMoveAfterActivePanel.push(tab)
-        } else if (activePanel.index > lastPanel.index) {
-          toMoveBeforeActivePanel.push(tab)
-        }
+      // within active panel) 
+      if (activePanel.index < lastPanel.index) {
+        toMoveAfterActivePanel.push(tab)
+      } else if (activePanel.index > lastPanel.index) {
+        toMoveBeforeActivePanel.push(tab)
       }
     } else {
       if (!tab.pinned) {
@@ -136,14 +133,12 @@ async function loadTabsFromSessionStorage() {
   }
 
   // Move tabs
-  if (hideInact) {
-    if (toMoveBeforeActivePanel.length) {
-      await this.actions.moveDroppedNodes(activePanel.startIndex, -1, toMoveBeforeActivePanel, toMoveBeforeActivePanel[0].pinned, activePanel)
-    }
-    if (toMoveAfterActivePanel.length) {
-      let index = activePanel.tabs.length ? activePanel.endIndex + 1 : activePanel.startIndex
-      await this.actions.moveDroppedNodes(index, -1, toMoveAfterActivePanel, toMoveAfterActivePanel[0].pinned, activePanel)
-    }
+  if (toMoveBeforeActivePanel.length) {
+    await this.actions.moveDroppedNodes(activePanel.startIndex, -1, toMoveBeforeActivePanel, toMoveBeforeActivePanel[0].pinned, activePanel)
+  }
+  if (toMoveAfterActivePanel.length) {
+    let index = activePanel.tabs.length ? activePanel.endIndex + 1 : activePanel.startIndex
+    await this.actions.moveDroppedNodes(index, -1, toMoveAfterActivePanel, toMoveAfterActivePanel[0].pinned, activePanel)
   }
 }
 
@@ -1418,7 +1413,6 @@ async function showAllTabs() {
  */
 function updateTabsVisibility() {
   let hideFolded = this.state.hideFoldedTabs
-  let hideInact = this.state.hideInact
   let actPanelIndex = this.state.panelIndex < 0 ? this.state.lastPanelIndex : this.state.panelIndex
 
   let actPanel = this.state.panels[actPanelIndex]
@@ -1435,7 +1429,7 @@ function updateTabsVisibility() {
       continue
     }
 
-    if (hideInact && tab.panelId !== actPanel.id) {
+    if (tab.panelId !== actPanel.id) {
       if (!tab.hidden) toHide.push(tab.id)
       continue
     }

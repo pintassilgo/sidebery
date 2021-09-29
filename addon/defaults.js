@@ -90,7 +90,6 @@ export const DEFAULT_SETTINGS = {
   activateLastTabOnPanelSwitching: true,
   showTabRmBtn: true,
   showTabCtx: true,
-  hideInact: false,
   activateAfterClosing: 'next',
   activateAfterClosingPrevRule: 'visible',
   activateAfterClosingNextRule: 'tree',

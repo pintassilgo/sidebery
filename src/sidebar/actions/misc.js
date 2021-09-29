@@ -71,15 +71,9 @@ async function chooseWin(config = {}) {
  */
 async function loadPermissions() {
   this.state.permAllUrls = await browser.permissions.contains({ origins: ['<all_urls>'] })
-  this.state.permTabHide = await browser.permissions.contains({ permissions: ['tabHide'] })
   this.state.permClipboardWrite = await browser.permissions.contains({
     permissions: ['clipboardWrite'],
   })
-
-  if (!this.state.permTabHide) {
-    this.state.hideInact = false
-    this.state.hideFoldedTabs = false
-  }
 }
 
 /**

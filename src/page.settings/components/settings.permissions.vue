@@ -11,15 +11,6 @@ section
       :note="t('settings.all_urls_info')"
       @input="togglePermAllUrls")
   .permission(
-    ref="tab_hide"
-    :data-highlight="$store.state.highlightedField === 'tab_hide'"
-    @click="onHighlighClick('tab_hide')")
-    ToggleField(
-      label="settings.tab_hide_label"
-      :value="$store.state.permTabHide"
-      :note="t('settings.tab_hide_info')"
-      @input="togglePermTabHide")
-  .permission(
     ref="clipboard_write"
     :data-highlight="$store.state.highlightedField === 'clipboard_write'"
     @click="onHighlighClick('clipboard_write')")
@@ -84,24 +75,6 @@ export default {
         browser.permissions.request(request).then(allowed => {
           browser.runtime.sendMessage({ action: 'loadPermissions' })
           State.permAllUrls = allowed
-        })
-      }
-    },
-
-    /**
-     * Toggle tabHide permission
-     */
-    async togglePermTabHide() {
-      if (State.permTabHide) {
-        await browser.runtime.sendMessage({ action: 'showAllTabs' })
-        await browser.permissions.remove({ permissions: ['tabHide'] })
-        browser.runtime.sendMessage({ action: 'loadPermissions' })
-        Actions.loadPermissions()
-      } else {
-        const request = { origins: [], permissions: ['tabHide'] }
-        browser.permissions.request(request).then(allowed => {
-          browser.runtime.sendMessage({ action: 'loadPermissions' })
-          State.permTabHide = allowed
         })
       }
     },

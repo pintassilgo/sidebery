@@ -23,10 +23,6 @@ section
     label="settings.show_tab_ctx"
     :value="$store.state.showTabCtx"
     @input="setOpt('showTabCtx', $event)")
-  ToggleField(
-    label="settings.hide_inactive_panel_tabs"
-    :value="$store.state.hideInact"
-    @input="toggleHideInact")
   SelectField(
     label="settings.activate_after_closing"
     optLabel="settings.activate_after_closing_"
@@ -103,20 +99,6 @@ import CountField from '../../components/count-field'
 import State from '../store/state'
 
 export default {
-  components: { ToggleField, SelectField, CountField },
-
-  methods: {
-    /**
-     * Check permissions and toggle 'hideInact' value
-     */
-    toggleHideInact() {
-      if (!State.hideInact && !State.permTabHide) {
-        location.hash = 'tab-hide'
-        return
-      }
-
-      this.setOpt('hideInact', !State.hideInact)
-    },
-  },
+  components: { ToggleField, SelectField, CountField }
 }
 </script>

@@ -134,7 +134,6 @@ export default {
     message: 'Показывать кнопку закрытия вкладки при наведении курсора',
   },
   'settings.show_tab_ctx': { message: 'Показывать цветовую метку контейнера' },
-  'settings.hide_inactive_panel_tabs': { message: 'Скрывать вкладки неактивных панелей' },
   'settings.activate_after_closing': { message: 'После закрытия текущей вкладки активировать' },
   'settings.activate_after_closing_next': { message: 'следующую' },
   'settings.activate_after_closing_prev': { message: 'предыдущую' },
@@ -383,10 +382,6 @@ export default {
   'settings.all_urls_info': {
     message:
       'Необходимо для:\n- Удаления cookies\n- Прокси и url-правил контейнеров\n- Скриншотов на групповой странице и на панели выбора окна',
-  },
-  'settings.tab_hide_label': { message: 'Скрытие табов:' },
-  'settings.tab_hide_info': {
-    message: 'Необходимо для:\n- Скрывания табов неактивных панелей\n- Скрывания свернутых табов',
   },
   'settings.clipboard_write_label': { message: 'Запись в буфер обмена:' },
   'settings.clipboard_write_info': {

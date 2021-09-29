@@ -42,22 +42,16 @@ section
 <script>
 import ToggleField from '../../components/toggle-field'
 import SelectField from '../../components/select-field'
-import NumField from '../../components/num-field'
 import State from '../store/state'
 
 export default {
-  components: { ToggleField, SelectField, NumField },
+  components: { ToggleField, SelectField },
 
   methods: {
     /**
      * Check permissions and toggle 'hideFoldedTabs' value
      */
     toggleHideFoldedTabs() {
-      if (!State.hideFoldedTabs && !State.permTabHide) {
-        location.hash = 'tab-hide'
-        return
-      }
-
       this.setOpt('hideFoldedTabs', !State.hideFoldedTabs)
     },
   },

@@ -38,7 +38,6 @@ export default {
   keybindings: [],
 
   permAllUrls: false,
-  permTabHide: false,
   permClipboardWrite: false,
   permWebRequestBlocking: false,
   permProxy: false,
