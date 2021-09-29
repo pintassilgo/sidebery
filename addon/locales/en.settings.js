@@ -123,7 +123,6 @@ export default {
   'settings.warn_on_multi_tab_close_any': { message: 'any' },
   'settings.warn_on_multi_tab_close_collapsed': { message: 'collapsed' },
   'settings.warn_on_multi_tab_close_none': { message: 'none' },
-  'settings.activate_on_mouseup': { message: 'Activate tab on mouse button release' },
   'settings.activate_last_tab_on_panel_switching': {
     message: 'Activate last active tab on panel switching',
   },

@@ -87,7 +87,6 @@ export const DEFAULT_SETTINGS = {
 
   // Tabs
   warnOnMultiTabClose: 'collapsed',
-  activateOnMouseUp: true,
   activateLastTabOnPanelSwitching: true,
   showTabRmBtn: true,
   showTabCtx: true,

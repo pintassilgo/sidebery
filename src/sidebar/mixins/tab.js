@@ -103,7 +103,7 @@ export default {
       if (State.selected.length && !this.tab.sel) Actions.resetSelection()
 
       // Activate tab (if nothing selected)
-      if (!State.selected.length && !State.activateOnMouseUp) {
+      if (!State.selected.length) {
         browser.tabs.update(this.tab.id, { active: true })
       }
 
@@ -182,7 +182,7 @@ export default {
       }
 
       if (e.button === 0) {
-        if ((State.selected.length || State.activateOnMouseUp) && !e.ctrlKey && !e.shiftKey) {
+        if (State.selected.length && !e.ctrlKey && !e.shiftKey) {
           if (this.mouseDownLeft) browser.tabs.update(this.tab.id, { active: true })
         }
         if (this.longClickActionLeft) {

@@ -12,10 +12,6 @@ section
     :value="$store.state.tabsRmUndoNote"
     @input="setOpt('tabsRmUndoNote', $event)")
   ToggleField(
-    label="settings.activate_on_mouseup"
-    :value="$store.state.activateOnMouseUp"
-    @input="setOpt('activateOnMouseUp', $event)")
-  ToggleField(
     label="settings.activate_last_tab_on_panel_switching"
     :value="$store.state.activateLastTabOnPanelSwitching"
     @input="setOpt('activateLastTabOnPanelSwitching', $event)")

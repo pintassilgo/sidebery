@@ -126,7 +126,6 @@ export default {
   'settings.warn_on_multi_tab_close_any': { message: 'любых' },
   'settings.warn_on_multi_tab_close_collapsed': { message: 'свернутых' },
   'settings.warn_on_multi_tab_close_none': { message: 'нет' },
-  'settings.activate_on_mouseup': { message: 'Активировать вкладку при отпускании кнопки мыши' },
   'settings.activate_last_tab_on_panel_switching': {
     message: 'Активировать последнюю активную вкладку при переключении панелей',
   },
