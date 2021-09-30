@@ -1696,9 +1696,7 @@ async function moveDroppedNodes(dropIndex, dropParent, nodes, pin, currentPanel)
       if (tab.active) hasActiveTab = true
       tab.panelId = currentPanel.id
     }
-    if (hasActiveTab && this.state.tabsPanelSwitchActMove) {
-      this.state.panelIndex = currentPanel.index
-    }
+    if (hasActiveTab) this.state.panelIndex = currentPanel.index
   }
   this.actions.updatePanelsTabs()
 
