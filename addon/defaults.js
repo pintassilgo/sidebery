@@ -117,7 +117,6 @@ export const DEFAULT_SETTINGS = {
   tabsTree: true,
   groupOnOpen: true,
   tabsTreeLimit: 'none',
-  hideFoldedTabs: false,
   tabsChildCount: true,
   tabsLvlDots: false,
   tabsTreeBookmarks: true,

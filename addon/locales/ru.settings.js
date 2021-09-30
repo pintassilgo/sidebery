@@ -212,7 +212,6 @@ export default {
   'settings.tabs_tree_limit_4': { message: '4' },
   'settings.tabs_tree_limit_5': { message: '5' },
   'settings.tabs_tree_limit_none': { message: 'выкл' },
-  'settings.hide_folded_tabs': { message: 'Скрывать свернутые вкладки' },
   'settings.tabs_child_count': { message: 'Показывать количество потомков на свернутой вкладке' },
   'settings.tabs_lvl_dots': { message: 'Показывать отметки уровней вложенности' },
   'settings.tabs_tree_bookmarks': {

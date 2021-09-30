@@ -199,7 +199,6 @@ export default {
   'settings.tabs_tree_limit_4': { message: '4' },
   'settings.tabs_tree_limit_5': { message: '5' },
   'settings.tabs_tree_limit_none': { message: 'none' },
-  'settings.hide_folded_tabs': { message: 'Hide folded tabs' },
   'settings.tabs_child_count': { message: 'Show count of descendants on the folded tab' },
   'settings.tabs_lvl_dots': { message: 'Show marks to indicate tabs sub-tree levels' },
   'settings.tabs_tree_bookmarks': { message: 'Preserve tree on creating bookmarks' },

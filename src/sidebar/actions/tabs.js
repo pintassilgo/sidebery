@@ -1412,7 +1412,6 @@ async function showAllTabs() {
  * Update tabs visibility
  */
 function updateTabsVisibility() {
-  let hideFolded = this.state.hideFoldedTabs
   let actPanelIndex = this.state.panelIndex < 0 ? this.state.lastPanelIndex : this.state.panelIndex
 
   let actPanel = this.state.panels[actPanelIndex]
@@ -1424,7 +1423,7 @@ function updateTabsVisibility() {
   for (let tab of this.state.tabs) {
     if (tab.pinned) continue
 
-    if (hideFolded && tab.invisible) {
+    if (tab.invisible) {
       if (!tab.hidden) toHide.push(tab.id)
       continue
     }
@@ -1465,9 +1464,7 @@ function foldTabsBranch(tabId) {
     if (target) browser.tabs.moveInSuccession([tab.id], target.id)
   }
 
-  if (this.state.hideFoldedTabs && toHide.length) {
-    browser.tabs.hide(toHide)
-  }
+  if (toHide.length) browser.tabs.hide(toHide)
   this.actions.saveTabsData()
   this.actions.saveTabData(tabId)
 }
@@ -1503,9 +1500,7 @@ function expTabsBranch(tabId) {
     if (target) browser.tabs.moveInSuccession([tab.id], target.id)
   }
 
-  if (this.state.hideFoldedTabs && toShow.length) {
-    browser.tabs.show(toShow)
-  }
+  if (toShow.length) browser.tabs.show(toShow)
   this.actions.saveTabsData()
   this.actions.saveTabData(tabId)
 }
@@ -1723,9 +1718,9 @@ async function moveDroppedNodes(dropIndex, dropParent, nodes, pin, currentPanel)
 
       // Update invisibility of tabs
       if (parent && parent.folded) {
-        if (this.state.hideFoldedTabs && !tab.hidden) toHide.push(tab.id)
+        if (!tab.hidden) toHide.push(tab.id)
       } else if (tab.parentId === parentId) {
-        if (this.state.hideFoldedTabs && tab.hidden) toShow.push(tab.id)
+        if (tab.hidden) toShow.push(tab.id)
       }
     }
 

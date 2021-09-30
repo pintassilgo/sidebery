@@ -18,11 +18,6 @@ section
     :opts="$store.state.tabsTreeLimitOpts"
     @input="setOpt('tabsTreeLimit', $event)")
   ToggleField(
-    label="settings.hide_folded_tabs"
-    :inactive="!$store.state.tabsTree"
-    :value="$store.state.hideFoldedTabs"
-    @input="toggleHideFoldedTabs")
-  ToggleField(
     label="settings.tabs_child_count"
     :inactive="!$store.state.tabsTree"
     :value="$store.state.tabsChildCount"
@@ -42,18 +37,8 @@ section
 <script>
 import ToggleField from '../../components/toggle-field'
 import SelectField from '../../components/select-field'
-import State from '../store/state'
 
 export default {
-  components: { ToggleField, SelectField },
-
-  methods: {
-    /**
-     * Check permissions and toggle 'hideFoldedTabs' value
-     */
-    toggleHideFoldedTabs() {
-      this.setOpt('hideFoldedTabs', !State.hideFoldedTabs)
-    },
-  },
+  components: { ToggleField, SelectField }
 }
 </script>

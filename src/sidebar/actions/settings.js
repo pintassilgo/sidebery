@@ -15,7 +15,6 @@ function updateSettings(settings) {
     this.state.activateAfterClosingNextRule !== settings.activateAfterClosingNextRule
   let resetTree = this.state.tabsTree !== settings.tabsTree && this.state.tabsTree
   let updateTree = this.state.tabsTreeLimit !== settings.tabsTreeLimit
-  let updateInvisTabs = this.state.hideFoldedTabs !== settings.hideFoldedTabs
   let toggleBookmarks = this.state.bookmarksPanel !== settings.bookmarksPanel
   let theme = this.state.theme !== settings.theme
   let highlightOpenBookmarks = this.state.highlightOpenBookmarks !== settings.highlightOpenBookmarks
@@ -47,10 +46,6 @@ function updateSettings(settings) {
 
   if (updateTree) {
     Actions.updateTabsTree()
-  }
-
-  if (updateInvisTabs) {
-    Actions.updateTabsVisibility()
   }
 
   if (toggleBookmarks) {
