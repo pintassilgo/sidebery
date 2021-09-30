@@ -147,7 +147,6 @@ export default {
   },
   'settings.ask_new_bookmark_place': { message: 'Ask where to store bookmarks' },
   'settings.tabs_rm_undo_note': { message: 'Show undo notification on closing multiple tabs' },
-  'settings.tabs_unread_mark': { message: 'Show the mark on unread tabs' },
   'settings.tabs_reload_limit': { message: 'Limit the count of simultaneously reloading tabs' },
   'settings.tabs_reload_limit_notif': {
     message: 'Show notification with the reloading progress',

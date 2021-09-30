@@ -67,10 +67,6 @@ section
     label="settings.ask_new_bookmark_place"
     :value="$store.state.askNewBookmarkPlace"
     @input="setOpt('askNewBookmarkPlace', $event)")
-  ToggleField(
-    label="settings.tabs_unread_mark"
-    :value="$store.state.tabsUnreadMark"
-    @input="setOpt('tabsUnreadMark', $event)")
   CountField.-inline(
     label="settings.tabs_reload_limit"
     :value="$store.state.tabsReloadLimit"

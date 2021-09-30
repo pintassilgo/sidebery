@@ -80,7 +80,7 @@ function onTabCreated(tab) {
   }
 
   // Set custom props
-  if (this.state.tabsUnreadMark && tab.unread === undefined && !tab.active) tab.unread = true
+  if (tab.unread === undefined && !tab.active) tab.unread = true
   Utils.normalizeTab(tab, panel.id)
   tab.index = index
   if (tab.openerTabId >= 0) tab.parentId = tab.openerTabId
@@ -726,7 +726,7 @@ function onTabActivated(info) {
   }
 
   tab.active = true
-  if (this.state.tabsUnreadMark) tab.unread = false
+  tab.unread = false
   tab.lastAccessed = Date.now()
   this.state.activeTabId = info.tabId
 

@@ -99,7 +99,6 @@ export const DEFAULT_SETTINGS = {
   shiftSelAct: true,
   askNewBookmarkPlace: false,
   tabsRmUndoNote: true,
-  tabsUnreadMark: false,
   tabsReloadLimit: 5,
   tabsReloadLimitNotif: true,
   tabsPanelSwitchActMove: true,
