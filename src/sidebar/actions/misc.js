@@ -106,12 +106,8 @@ async function undoRmTab() {
  */
 function selectItem(id) {
   let target
-  if (typeof id === 'number') {
-    target = this.state.tabsMap[id]
-    if (this.state.nativeHighlight) this.actions.updateHighlightedTabs(120)
-  } else if (this.state.bookmarksMap) {
-    target = this.state.bookmarksMap[id]
-  }
+  if (typeof id === 'number') target = this.state.tabsMap[id]
+  else if (this.state.bookmarksMap) target = this.state.bookmarksMap[id]
   if (!target) return
 
   target.sel = true
@@ -123,12 +119,8 @@ function selectItem(id) {
  */
 function deselectItem(id) {
   let item
-  if (typeof id === 'number') {
-    item = this.state.tabsMap[id]
-    if (this.state.nativeHighlight) this.actions.updateHighlightedTabs(120)
-  } else if (this.state.bookmarksMap) {
-    item = this.state.bookmarksMap[id]
-  }
+  if (typeof id === 'number') item = this.state.tabsMap[id]
+  else if (this.state.bookmarksMap) item = this.state.bookmarksMap[id]
 
   if (item) {
     item.sel = false
@@ -149,7 +141,6 @@ function resetSelection() {
     for (let id of this.state.selected) {
       if (this.state.tabsMap[id]) this.state.tabsMap[id].sel = false
     }
-    if (this.state.nativeHighlight) this.actions.updateHighlightedTabs(120)
   } else if (typeof id === 'string') {
     for (let id of this.state.selected) {
       if (this.state.bookmarksMap[id]) this.state.bookmarksMap[id].sel = false

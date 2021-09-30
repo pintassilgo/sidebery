@@ -68,10 +68,6 @@ section
     :value="$store.state.askNewBookmarkPlace"
     @input="setOpt('askNewBookmarkPlace', $event)")
   ToggleField(
-    label="settings.native_highlight"
-    :value="$store.state.nativeHighlight"
-    @input="setOpt('nativeHighlight', $event)")
-  ToggleField(
     label="settings.tabs_unread_mark"
     :value="$store.state.tabsUnreadMark"
     @input="setOpt('tabsUnreadMark', $event)")

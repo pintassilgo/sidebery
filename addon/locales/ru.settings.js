@@ -152,9 +152,6 @@ export default {
   },
   'settings.ask_new_bookmark_place': { message: 'Спрашивать куда сохранить закладки' },
   'settings.tabs_rm_undo_note': { message: 'Показывать уведомление о закрытии нескольких вкладок' },
-  'settings.native_highlight': {
-    message: 'Выделять стандартные вкладки (в верхней панели) вместе с вкладками в боковой панели',
-  },
   'settings.tabs_unread_mark': { message: 'Показывать метку на непрочитанных вкладках' },
   'settings.tabs_reload_limit': {
     message: 'Ограничить количество одновременно перезагружаемых вкладок.',

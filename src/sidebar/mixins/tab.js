@@ -95,7 +95,6 @@ export default {
             if (i !== first.index) State.selected.push(State.tabs[i].id)
           }
         }
-        if (State.nativeHighlight) Actions.updateHighlightedTabs()
         // e.preventDefault() ? - from pinned tab
         return
       }
