@@ -300,7 +300,7 @@ function createGroupUrl(name, conf) {
  * Find successor tab (tab that will be activated
  * after removing currenly active tab)
  */
-function findSuccessorTab(state, tab, exclude) {
+function findSuccessorTab(state, tab, exclude) {return;
   let target
   let isNextTree = state.activateAfterClosingNextRule === 'tree'
   let isPrevTree = state.activateAfterClosingPrevRule === 'tree'

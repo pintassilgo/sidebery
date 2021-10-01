@@ -778,6 +778,21 @@ function onTabActivated(info) {
     }
   }
 
+  if (
+    // Current tab is the only child
+    tab.parentId !== -1 &&
+    this.state.tabs[tab.index - 1].id == tab.parentId &&
+    !this.state.tabs[tab.index - 1].discarded &&
+    (
+      !this.state.tabs[tab.index + 1] ||
+      this.state.tabs[tab.index + 1].panelId !== this.state.panels[this.state.panelIndex].id ||
+      this.state.tabs[tab.index + 1].lvl < this.state.tabs[tab.index].lvl
+    )
+  ) {
+    browser.tabs.moveInSuccession([tab.id], this.state.tabs[tab.index - 1].id)
+    console.log('aba atual ' + tab.title + ' é filha única')
+  }
+
   if (this.state.tabsTree && Utils.isGroupUrl(tab.url)) {
     this.actions.updateGroupTab(tab)
   } else {
