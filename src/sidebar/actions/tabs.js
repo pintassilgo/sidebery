@@ -2425,6 +2425,12 @@ function updateTabsTree(startIndex = 0, endIndex = -1) {
 
     // Parent is defined
     if (parent && !parent.pinned && parent.panelId === t.panelId) {
+      if (
+        t.indirectOpenerTabId !== undefined &&
+        t.indirectOpenerTabId != parent.indirectOpenerTabId
+      ) {
+        t.indirectOpenerTabId = undefined
+      }
       if (parent.lvl === maxLvl) {
         parent.isParent = false
         parent.folded = false

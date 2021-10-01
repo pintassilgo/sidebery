@@ -388,6 +388,14 @@ function findSuccessorTab(state, tab, exclude) {
     }
 
     if (!target) {
+      if (
+        state.tabsMap[tab.indirectOpenerTabId] &&
+        (!skipDiscarded || !state.tabsMap[tab.indirectOpenerTabId].discarded) &&
+        (!isNextTree || tab.parentId === -1)
+      ) {
+        return state.tabsMap[tab.indirectOpenerTabId]
+      }
+
       let i, prev
       for (i = tab.index; i--; ) {
         prev = state.tabs[i]

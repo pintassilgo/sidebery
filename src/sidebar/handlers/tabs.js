@@ -18,6 +18,11 @@ function onTabCreated(tab) {
 
   let panel, index, prevPos, prevPosPanel, createGroup, initialOpenerSpec, autoGroupTab
   let initialOpener = this.state.tabsMap[tab.openerTabId]
+  if (tab.openerTabId === undefined) {
+    tab.indirectOpenerTabId = this.state.activeTabId
+  } else if (initialOpener.indirectOpenerTabId !== undefined) {
+    tab.indirectOpenerTabId = initialOpener.indirectOpenerTabId
+  }
 
   // Check if opener tab is pinned
   if (this.state.pinnedAutoGroup && initialOpener && initialOpener.pinned && this.state.tabsTree) {
