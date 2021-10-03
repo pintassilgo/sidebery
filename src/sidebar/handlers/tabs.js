@@ -733,20 +733,18 @@ function onTabActivated(info) {
       if (box.actTabs.length > 128) box.actTabs = box.actTabs.slice(32)
       box.actTabs.push(prevActive.id)
 
-      if (!prevActive.pinned || this.state.pinnedTabsPosition === 'panel') {
-        box = this.state.panelsMap[prevActive.panelId]
-        if (!box.actTabs) box.actTabs = []
-        if (
-          box.actTabOffset >= 0 &&
-          box.actTabOffset < box.actTabs.length &&
-          prevActive.panelId === tab.panelId
-        ) {
-          box.actTabs = box.actTabs.slice(0, box.actTabOffset)
-          box.actTabOffset = undefined
-        }
-        if (box.actTabs.length > 128) box.actTabs = box.actTabs.slice(32)
-        box.actTabs.push(prevActive.id)
+      box = this.state.panelsMap[prevActive.panelId]
+      if (!box.actTabs) box.actTabs = []
+      if (
+        box.actTabOffset >= 0 &&
+        box.actTabOffset < box.actTabs.length &&
+        prevActive.panelId === tab.panelId
+      ) {
+        box.actTabs = box.actTabs.slice(0, box.actTabOffset)
+        box.actTabOffset = undefined
       }
+      if (box.actTabs.length > 128) box.actTabs = box.actTabs.slice(32)
+      box.actTabs.push(prevActive.id)
     } else {
       this.state.skipActTabsCollecting = false
     }
