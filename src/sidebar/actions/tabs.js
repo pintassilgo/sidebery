@@ -1131,19 +1131,17 @@ function _reloadTab(tab) {
  * Discard tabs
  */
 async function discardTabs(tabIds = []) {
-  if (this.state.activateAfterClosing !== 'none') {
-    const activeTab = this.state.tabsMap[this.state.activeTabId]
-    if (activeTab) {
-      tabIds.forEach(t => this.state.tabsMap[t].discarded = true)
-      const target = Utils.findSuccessorTab(this.state, activeTab, tabIds)
-      if (target) {
-        if (tabIds.includes(this.state.activeTabId))
-          await browser.tabs.update(target.id, { active: true })
-        else
-          browser.tabs.moveInSuccession([activeTab.id], target.id)
-      } else {
-        tabIds.splice(tabIds.indexOf(this.state.activeTabId), 1);
-      }
+  const activeTab = this.state.tabsMap[this.state.activeTabId]
+  if (activeTab) {
+    tabIds.forEach(t => this.state.tabsMap[t].discarded = true)
+    const target = Utils.findSuccessorTab(this.state, activeTab, tabIds, true)
+    if (target) {
+      if (tabIds.includes(this.state.activeTabId))
+        await browser.tabs.update(target.id, { active: true })
+      else if (this.state.activateAfterClosing !== 'none')
+        browser.tabs.moveInSuccession([activeTab.id], target.id)
+    } else {
+      tabIds.splice(tabIds.indexOf(this.state.activeTabId), 1);
     }
   }
   browser.tabs.discard(tabIds)

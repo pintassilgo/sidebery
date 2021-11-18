@@ -300,7 +300,7 @@ function createGroupUrl(name, conf) {
  * Find successor tab (tab that will be activated
  * after removing currenly active tab)
  */
-function findSuccessorTab(state, tab, exclude) {
+function findSuccessorTab(state, tab, exclude, force) {
   let target
   let isNextTree = state.activateAfterClosingNextRule === 'tree'
   let rmFolded = state.rmChildTabs === 'folded'
@@ -357,7 +357,7 @@ function findSuccessorTab(state, tab, exclude) {
   }
 
   // Next tab
-  if (state.activateAfterClosing === 'next') {
+  if (state.activateAfterClosing === 'next' || force) {
     for (let i = tab.index + 1, next; i < state.tabs.length; i++) {
       next = state.tabs[i]
       if (!next) break
