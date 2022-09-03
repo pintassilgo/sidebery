@@ -635,6 +635,14 @@ function onTabMoved(id, info) {
     this.actions.setPanel(this.state.panelsMap[movedTab.panelId].index)
   }
 
+  if (
+    srcPanel !== destPanel &&
+    (this.state.panels[this.state.panelIndex] === srcPanel ||
+    this.state.panels[this.state.panelIndex] === destPanel)
+  ) {
+    this.actions.updateTabsVisibility()
+  }
+
   if (!this.state.movingTabs.length) this.actions.saveTabsData()
   this.actions.saveTabData(movedTab)
 
