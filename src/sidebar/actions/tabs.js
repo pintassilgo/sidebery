@@ -1572,6 +1572,21 @@ async function moveTabsToThisWin(tabs, fromPrivate) {
 }
 
 /**
+ * Check if drop ocurred over sidebar
+ */
+async function checkDropOnSidebar(windowId) {
+  if (this.state.lastDroppedToSidebar && this.state.dragNodes) {
+    browser.runtime.sendMessage({
+      windowId,
+      instanceType: 'sidebar',
+      action: 'moveTabsToNewWin',
+      args: [this.state.dragNodes.map(t => t.id), this.state.private],
+    })
+    delete this.state.lastDroppedToSidebar
+  }
+}
+
+/**
  * Reopen tabs in provided container.
  */
 async function reopenTabsInCtx(tabIds, ctxId) {
@@ -2934,6 +2949,7 @@ export default {
   moveTabsToNewWin,
   moveTabsToWin,
   moveTabsToThisWin,
+  checkDropOnSidebar,
   reopenTabsInCtx,
   moveTabsToPanel,
 

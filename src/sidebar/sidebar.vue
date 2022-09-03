@@ -511,6 +511,7 @@ export default {
      * Drop event handler
      */
     onDrop(e) {
+      State.lastDroppedToSidebar = true
       if (State.dropParent === undefined) State.dropParent = -1
       if (State.dropParent === null) State.dropParent = -1
 
